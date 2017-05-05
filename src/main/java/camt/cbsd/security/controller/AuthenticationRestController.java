@@ -4,6 +4,7 @@ import camt.cbsd.security.JwtAuthenticationRequest;
 import camt.cbsd.security.JwtTokenUtil;
 import camt.cbsd.security.JwtUser;
 import camt.cbsd.security.service.JwtAuthenticationResponse;
+import camt.cbsd.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,9 @@ public class AuthenticationRestController {
 
     @Value("${jwt.header}")
     private String tokenHeader;
+
+    @Autowired
+    private StudentService studentService;
 
     @Autowired
     private AuthenticationManager authenticationManager;

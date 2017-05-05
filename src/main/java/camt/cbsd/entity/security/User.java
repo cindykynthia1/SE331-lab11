@@ -1,7 +1,9 @@
 package camt.cbsd.entity.security;
 
+import camt.cbsd.entity.Student;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -15,6 +17,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class User {
 
     @Id
@@ -63,6 +66,9 @@ public class User {
             joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID")})
     private List<Authority> authorities;
+
+    @OneToOne
+    Student student;
 
     public Long getId() {
         return id;
@@ -135,4 +141,6 @@ public class User {
     public void setLastPasswordResetDate(Date lastPasswordResetDate) {
         this.lastPasswordResetDate = lastPasswordResetDate;
     }
+
+
 }
